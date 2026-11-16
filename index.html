@@ -1,12 +1,66 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nguyen Trung Kien | Construction Superintendent</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-blue-600">Nguyen Trung Kien</h1>
+            <ul class="flex space-x-6">
+                <li><a href="#about" class="hover:text-blue-600">About</a></li>
+                <li><a href="#projects" class="hover:text-blue-600">Projects</a></li>
+                <li><a href="#contact" class="hover:text-blue-600">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto text-center px-4">
+            <h2 class="text-5xl font-extrabold mb-4">Construction Superintendent</h2>
+            <p class="text-xl text-gray-600 mb-8">20+ years of experience in External Turret, Offshore Oil & Gas, and Wind Power projects.</p>
+            <a href="./cv.pdf" download 
+               class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition">
+                Download CV
+            </a>
+        </div>
+    </header>
+
+    <!-- Projects Gallery -->
+    <section id="projects" class="py-16">
+        <div class="max-w-6xl mx-auto px-4">
+            <h3 class="text-3xl font-bold mb-10 text-center">Project Gallery</h3>
+            <div id="gallery-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Gallery items will be injected here by JS -->
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Configuration: Add your image filenames here
+        const projects = [
+            { src: './images/project1.jpg', caption: 'Offshore Wind Power Installation' },
+            { src: './images/project2.jpg', caption: 'External Turret Assembly' },
+            { src: './images/project3.jpg', caption: 'Oil & Gas Platform Maintenance' }
+        ];
+
+        const galleryContainer = document.getElementById('gallery-container');
+
+        projects.forEach(project => {
+            const card = document.createElement('div');
+            card.className = 'bg-white p-4 rounded-lg shadow hover:shadow-md transition';
+            card.innerHTML = `
+                <img src="${project.src}" alt="${project.caption}" class="w-full h-64 object-cover rounded mb-4" onerror="this.src='https://via.placeholder.com/400x300?text=Image+Not+Found'">
+                <p class="text-center font-medium">${project.caption}</p>
+            `;
+            galleryContainer.appendChild(card);
+        });
+    </script>
+</body>
 </html>
